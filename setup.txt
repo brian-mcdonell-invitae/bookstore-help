@@ -1,0 +1,32 @@
+
+npx create-next-app@latest bookstore
+cd bookstore
+
+docker run --name bookstore-db -e POSTGRES_PASSWORD=mypassword -p 5432:5432 -d postgres
+    https://dbeaver.io/download/
+
+PRISMA:
+    npm install prisma @prisma/client pg axios
+    npx prisma init
+        - create prisma models
+    npx prisma migrate dev --name init
+    npx prisma generate
+        - create prisma seed.js file
+    node prisma/seed.js
+
+SEQUELIZE:
+    npm install sequelize pg pg-hstore
+    npm install dotenv
+    - need to create the db:
+        CREATE DATABASE bookstore_db;
+    node scripts/syncDb.js
+
+
+npm run dev
+
+http://localhost:3000/prisma
+    http://localhost:3000/api/books-prisma
+
+http://localhost:3000/sequelize
+    http://localhost:3000/api/books-sequelize
+
